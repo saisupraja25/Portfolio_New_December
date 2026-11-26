@@ -1,6 +1,6 @@
 /**
  * Single source of content for the site. Every value below is taken from
- * public/Sai-Supraja-Resume.pdf (text and embedded links). Components only read from here.
+ * public/Sai_Supraja_Financial_Analyst_Resume.pdf (text and embedded links). Components only read from here.
  * If something is not in the résumé, it is left out; empty lists hide their section.
  */
 
@@ -12,28 +12,39 @@ export const PROFILE = {
   name: 'Sai Supraja',
   firstName: 'Sai',
   initials: 'SS',
-  role: 'Business Intelligence Analyst',
+  role: 'Financial Analyst',
+  /** hero heading: lead words + one italic accent word */
+  roleLead: 'Financial',
+  roleAccent: 'Analyst.',
+  dept: 'Finance & Risk',
   email: 'saisupraja294@gmail.com',
   phone: '+1 (346) 638-2828',
   phoneHref: 'tel:+13466382828',
   location: 'USA',
   resumeSummary:
-    'Business Intelligence Analyst with 4+ years of experience in designing enterprise BI solutions, developing interactive dashboards, and transforming complex datasets into actionable business insights. Expertise in Power BI, Tableau, SQL, Python, Excel, ETL, Azure Data Factory, and Data Warehousing. Delivered BI solutions reduced manual reporting by 55%, improved data accuracy by 35%, and accelerated business decision-making by 40%. Skilled in data modeling, SQL optimization, KPI reporting, automation, and collaborating with cross-functional teams to drive business growth in Agile environments.',
-  /** One more short line, verbatim from the Walmart role. */
+    'Financial Analyst with nearly four years of experience in financial risk analysis, forecasting and performance reporting across financial services and enterprise environments. Combines credit, market and operational risk assessment with hands-on data skills in Advanced Excel, SQL, Python and Power BI to turn financial data into clear decisions.',
+  /** One more short line, verbatim from the summary. */
   extraLine:
-    'Collaborated with business stakeholders to gather requirements and deliver BI solutions that improved operational efficiency by 30%.',
-  /** Paraphrase of the résumé summary ("transforming complex datasets into actionable business insights"). */
-  quote: 'Complex datasets in. Actionable business insight out.',
-  heroIntro: 'Designing enterprise BI solutions and interactive dashboards for 4+ years.',
+    'Recent results include resolving more than $75,000 in cost discrepancies, improving reporting accuracy by 25% and cutting reporting time by 30%.',
+  /** Paraphrase of the résumé summary ("to turn financial data into clear decisions"). */
+  quote: 'Financial data in. Clear decisions out.',
+  heroIntro: 'Financial risk analysis, forecasting and performance reporting, backed by SQL, Python and Power BI.',
   linkedin: 'https://www.linkedin.com/in/sai-supraja-kumar',
-  /** Not in the résumé, so not shown. Add it here if the résumé gains a GitHub link. */
-  github: null as string | null,
-  resume: '/Sai-Supraja-Resume.pdf',
-  resumeFileName: 'Sai-Supraja-Resume.pdf',
+  github: 'https://github.com/saisupraja25' as string | null,
+  resume: '/Sai_Supraja_Financial_Analyst_Resume.pdf',
+  resumeFileName: 'Sai_Supraja_Financial_Analyst_Resume.pdf',
   education: 'M.S. Data Science, University of Houston',
   graduation: '2025',
-  currentRole: 'Business Intelligence Analyst, Walmart',
+  currentRole: 'Financial Analyst, Morgan Stanley',
   careerStart: '2021',
+  /** Back of the ID card ("What I am"): all from the résumé. */
+  cardLines: [
+    'Financial Analyst · Morgan Stanley',
+    'Financial Risk Analyst · XLogic (2021–2023)',
+    'M.S. Data Science, University of Houston (2025)',
+    'Excel · SQL · Python · Power BI · Azure',
+    'Certified: Power BI Data Analyst Associate · Azure Data Fundamentals',
+  ],
   /**
    * Talking-intro video. null = the hero shows the still portrait.
    * After running scripts/build-hero-assets.py, set this to:
@@ -48,7 +59,7 @@ export const PROFILE = {
 export type SectionId = 'about' | 'skills' | 'work' | 'certifications' | 'experience' | 'achievements' | 'contact';
 
 /* ------------------------------------------------------------------ */
-/* Experience (verbatim bullets)                                       */
+/* Experience (verbatim bullets from the résumé)                       */
 /* ------------------------------------------------------------------ */
 
 export type Role = {
@@ -62,51 +73,35 @@ export type Role = {
 
 export const EXPERIENCE: Role[] = [
   {
-    company: 'Walmart',
+    company: 'Morgan Stanley',
     place: 'USA',
-    title: 'Business Intelligence Analyst',
+    title: 'Financial Analyst',
     start: 'Jul 2025',
     end: 'Present',
     bullets: [
-      'Developed enterprise-wide Power BI dashboards integrating sales, finance, supply chain, and customer data, reducing manual reporting effort by 55%.',
-      'Automated ETL workflows using Azure Data Factory, SQL, and Power Query, reducing data refresh time by 50%.',
-      'Created executive KPI dashboards enabling leadership to monitor revenue, profitability, inventory, and customer performance in real time, improving decision-making speed by 40%.',
-      'Built reusable DAX measures, calculated columns, and Power Query transformations, reducing report development time by 35%.',
-      'Implemented Row-Level Security (RLS), data governance policies, and validation processes, improving reporting accuracy to 99%.',
-      'Collaborated with business stakeholders to gather requirements and deliver BI solutions that improved operational efficiency by 30%.',
-      'Automated weekly and monthly reporting processes, saving over 25 hours per week across business teams.',
-    ],
-  },
-  {
-    company: 'Accenture',
-    place: 'India',
-    title: 'Business Intelligence Developer',
-    start: 'Jun 2022',
-    end: 'Jul 2023',
-    bullets: [
-      'Designed and deployed Power BI & Tableau dashboards for finance, HR, sales, & operations, improving reporting efficiency by 45%.',
-      'Developed optimized SQL stored procedures, views, and complex queries, reducing report execution time by 40%.',
-      'Built enterprise data models using Star Schema and Snowflake Schema, improving reporting scalability by 35%.',
-      'Streamlined ETL pipeline creation leveraging SQL, SSIS, and Azure Data Factory; achieved a significant reduction in manual processing tasks that led to an overall efficiency gain of approximately 50% monthly.',
-      'Integrated ERP, CRM, and cloud-based data sources into centralized BI solutions, improving data accessibility by 40%.',
-      'Worked in Agile Scrum teams, participating in sprint planning, UAT, deployment, and production support while maintaining 98% on-time project delivery.',
-      'Performed data cleansing, validation, and reconciliation, increasing data quality and reporting accuracy by 30%.',
+      'Reconcile monthly results against projected targets; identified and resolved more than $75,000 in cost discrepancies.',
+      'Extract, transform, validate and reconcile financial datasets in SQL, improving reporting accuracy by 25%.',
+      'Evaluate financial scenarios and market fluctuations to flag risks, improving decision-making efficiency by 20%.',
+      'Build Advanced Excel models and forecasts for revenue, expenses, cash flow and portfolio performance.',
+      'Assess financial exposure using financial statements, market trends and key risk indicators.',
+      'Develop Power BI dashboards (DAX, Power Query) tracking financial KPIs, risk exposure and budget performance, and prepare performance reports and management presentations that support strategic decisions.',
+      'Automate repetitive reporting and identify trends in financial data with Python (Pandas, NumPy).',
     ],
   },
   {
     company: 'XLogic',
     place: 'India',
-    title: 'Data Analyst',
+    title: 'Financial Risk Analyst',
     start: 'Feb 2021',
-    end: 'May 2022',
+    end: 'Jul 2023',
     bullets: [
-      'Investigated large business datasets with SQL, Python, and Excel, uncovering trends that boosted operational efficiency by 20% and improved data quality by 30%.',
-      'Cleaned, transformed, and validated over 5 million records, ensuring 99% data accuracy for business reporting.',
-      'Automated Excel reports using Power Query and VBA, reducing manual effort by 35%.',
-      'Created interactive business intelligence dashboards using Power BI and Tableau, improving data visualization and reducing report generation time by 40%.',
-      'Performed exploratory data analysis (EDA) and statistical analysis to identify customer behavior and business opportunities.',
-      'Assisted in developing ETL workflows and data migration processes supporting enterprise reporting initiatives.',
-      'Collaborated with cross-functional teams to define KPIs and business metrics, improving reporting consistency by 25%.',
+      'Identified the three largest causes of budget overruns; presented findings that led management to adjust allocations and stopped recurring spend leaks.',
+      'Built Power BI dashboards tracking financial KPIs and risk indicators, reducing reporting time by 30%.',
+      'Reduced reporting turnaround time by 25% using Advanced Excel (PivotTables, VLOOKUP, financial formulas).',
+      'Improved data accuracy by 20% by extracting, validating and reconciling financial data with SQL.',
+      'Conducted credit risk assessments using financial ratios, payment histories, credit indicators and historical data.',
+      'Evaluated balance sheets, income statements and cash flow reports to assess financial health; performed market and operational risk analysis and recommended mitigation strategies.',
+      'Prepared risk assessment reports, audit documentation and management summaries, processing and analyzing data with Python (Pandas, NumPy), SQL Server and Microsoft Azure.',
     ],
   },
 ];
@@ -128,29 +123,24 @@ export type PathStop = {
 };
 
 export const PATH: PathStop[] = [
-  { kind: 'work', year: '2021', title: 'Data Analyst', place: 'XLogic, India', period: 'Feb 2021 – May 2022', details: EXPERIENCE[2].bullets.slice(0, 3) },
-  { kind: 'work', year: '2022', title: 'Business Intelligence Developer', place: 'Accenture, India', period: 'Jun 2022 – Jul 2023', details: EXPERIENCE[1].bullets.slice(0, 3) },
+  { kind: 'work', year: '2021', title: 'Financial Risk Analyst', place: 'XLogic, India', period: 'Feb 2021 – Jul 2023', details: EXPERIENCE[1].bullets.slice(0, 3) },
   { kind: 'study', year: '2023', title: 'Master of Science in Data Science', place: 'University of Houston, USA', period: 'Aug 2023 – May 2025', details: [] },
-  { kind: 'work', year: '2025', title: 'Business Intelligence Analyst', place: 'Walmart, USA', period: 'Jul 2025 – Present', details: EXPERIENCE[0].bullets.slice(0, 3) },
+  { kind: 'work', year: '2025', title: 'Financial Analyst', place: 'Morgan Stanley, USA', period: 'Jul 2025 – Present', details: EXPERIENCE[0].bullets.slice(0, 3) },
 ];
 
 /* ------------------------------------------------------------------ */
 /* Skills: the periodic table                                          */
 /* ------------------------------------------------------------------ */
 
-export type Family =
-  | 'Business Intelligence'
-  | 'Languages'
-  | 'Databases'
-  | 'Data Warehousing'
-  | 'ETL & Integration'
-  | 'Cloud'
-  | 'Reporting'
-  | 'Analytics'
-  | 'Microsoft Office'
-  | 'Business Apps'
-  | 'Tools'
-  | 'Methodologies';
+export type Family = 'Financial Analysis & FP&A' | 'Risk Management' | 'Reporting & Controls' | 'Tools & Technology';
+
+/** One colour per family (used on tiles, filters and the inspector glow). */
+export const FAMILY_COLOR: Record<Family, string> = {
+  'Financial Analysis & FP&A': '#10b981',
+  'Risk Management': '#f43f5e',
+  'Reporting & Controls': '#f59e0b',
+  'Tools & Technology': '#6366f1',
+};
 
 export type Skill = {
   name: string;
@@ -158,7 +148,7 @@ export type Skill = {
   family: Family;
   /** key into TechLogo (brand file or concept icon) */
   logo: string;
-  /** words to look for in the experience bullets ("Used at") */
+  /** patterns to look for in the experience bullets ("Used at") */
   match?: string[];
 };
 
@@ -166,130 +156,64 @@ const S = (name: string, symbol: string, family: Family, logo: string, match?: s
 
 export const SKILL_GROUPS: { family: Family; skills: Skill[] }[] = [
   {
-    family: 'Business Intelligence',
+    family: 'Financial Analysis & FP&A',
     skills: [
-      S('Power BI', 'Pb', 'Business Intelligence', 'c:powerbi'),
-      S('Tableau', 'Tb', 'Business Intelligence', 'c:tableau'),
-      S('Looker', 'Lk', 'Business Intelligence', 'looker'),
-      S('Microsoft SSRS', 'Rs', 'Business Intelligence', 'c:report', ['SSRS']),
-      S('SAP BusinessObjects', 'Bo', 'Business Intelligence', 'sap', ['BusinessObjects']),
+      S('Financial Statement Analysis', 'Fs', 'Financial Analysis & FP&A', 'c:statement', ['financial statements', 'balance sheets', 'income statements']),
+      S('Financial Modeling', 'Fm', 'Financial Analysis & FP&A', 'c:model', ['models']),
+      S('Budgeting', 'Bu', 'Financial Analysis & FP&A', 'c:budget', ['budget']),
+      S('Forecasting', 'Fc', 'Financial Analysis & FP&A', 'c:forecast', ['forecast']),
+      S('Variance Analysis', 'Va', 'Financial Analysis & FP&A', 'c:variance', ['against projected targets']),
+      S('Cash Flow Analysis', 'Cf', 'Financial Analysis & FP&A', 'c:cashflow', ['cash flow']),
+      S('Profitability Analysis', 'Pf', 'Financial Analysis & FP&A', 'c:profit', ['profitab']),
+      S('Revenue Analysis', 'Rv', 'Financial Analysis & FP&A', 'c:trend', ['revenue']),
+      S('Financial Ratio Analysis', 'Fr', 'Financial Analysis & FP&A', 'c:ratio', ['financial ratios']),
     ],
   },
   {
-    family: 'Languages',
+    family: 'Risk Management',
     skills: [
-      S('SQL', 'Sq', 'Languages', 'c:sql'),
-      S('Python', 'Py', 'Languages', 'python'),
-      S('Pandas', 'Pd', 'Languages', 'pandas'),
-      S('NumPy', 'Np', 'Languages', 'numpy'),
-      S('R', 'R', 'Languages', 'r', ['\\bR\\b']),
-      S('DAX', 'Dx', 'Languages', 'c:dax'),
-      S('Power Query (M)', 'Pq', 'Languages', 'c:query', ['Power Query']),
+      S('Credit Risk Assessment', 'Cr', 'Risk Management', 'c:credit', ['credit risk']),
+      S('Market Risk Analysis', 'Mr', 'Risk Management', 'c:market', ['market risk', 'market fluctuations', 'market trends']),
+      S('Operational Risk Management', 'Op', 'Risk Management', 'c:operational', ['operational risk']),
+      S('Key Risk Indicators', 'Kr', 'Risk Management', 'c:kpi', ['risk indicators']),
+      S('Scenario Analysis', 'Sc', 'Risk Management', 'c:scenario', ['scenarios']),
+      S('Sensitivity Analysis', 'Se', 'Risk Management', 'c:sensitivity', ['sensitivity']),
+      S('Risk Mitigation', 'Rm', 'Risk Management', 'c:shield', ['mitigation']),
     ],
   },
   {
-    family: 'Databases',
+    family: 'Reporting & Controls',
     skills: [
-      S('SQL Server', 'Ss', 'Databases', 'microsoftsqlserver'),
-      S('MySQL', 'My', 'Databases', 'mysql'),
-      S('PostgreSQL', 'Pg', 'Databases', 'postgresql'),
-      S('Oracle Database', 'Or', 'Databases', 'oracle'),
-      S('Snowflake', 'Sf', 'Databases', 'snowflake', ['\\bSnowflake\\b(?! Schema)']),
-      S('Amazon Redshift', 'Rd', 'Databases', 'amazonwebservices', ['Redshift']),
+      S('Management Reporting', 'Mg', 'Reporting & Controls', 'c:report', ['management presentations', 'management summaries']),
+      S('KPI Monitoring', 'Kp', 'Reporting & Controls', 'c:dashboard', ['KPIs']),
+      S('Financial Reconciliation', 'Rc', 'Reporting & Controls', 'c:reconcile', ['reconcil']),
+      S('Cost Analysis', 'Co', 'Reporting & Controls', 'c:cost', ['cost discrepancies', 'spend']),
+      S('Audit Support', 'Au', 'Reporting & Controls', 'c:audit', ['audit']),
+      S('Internal Controls', 'Ic', 'Reporting & Controls', 'c:controls', ['internal controls']),
     ],
   },
   {
-    family: 'Data Warehousing',
+    family: 'Tools & Technology',
     skills: [
-      S('Data Modeling', 'Dm', 'Data Warehousing', 'c:model', ['data models']),
-      S('Star Schema', 'St', 'Data Warehousing', 'c:star'),
-      S('Snowflake Schema', 'Sh', 'Data Warehousing', 'c:flake'),
-      S('Dimensional Modeling', 'Di', 'Data Warehousing', 'c:cube'),
-      S('Data Warehouse Design', 'Dw', 'Data Warehousing', 'c:warehouse'),
-    ],
-  },
-  {
-    family: 'ETL & Integration',
-    skills: [
-      S('SSIS', 'Is', 'ETL & Integration', 'c:pipeline'),
-      S('Azure Data Factory', 'Df', 'ETL & Integration', 'azure'),
-      S('Informatica', 'If', 'ETL & Integration', 'c:pipeline'),
-      S('Talend', 'Tl', 'ETL & Integration', 'talend'),
-      S('Alteryx', 'Ax', 'ETL & Integration', 'c:flow'),
-      S('ETL Pipeline Development', 'Et', 'ETL & Integration', 'c:pipeline', ['ETL']),
-    ],
-  },
-  {
-    family: 'Cloud',
-    skills: [
-      S('Microsoft Azure', 'Az', 'Cloud', 'azure', ['Azure']),
-      S('AWS', 'Aw', 'Cloud', 'amazonwebservices'),
-      S('Google Cloud Platform', 'Gc', 'Cloud', 'googlecloud', ['GCP']),
-    ],
-  },
-  {
-    family: 'Reporting',
-    skills: [
-      S('Interactive Dashboards', 'Id', 'Reporting', 'c:dashboard', ['interactive']),
-      S('KPI Reporting', 'Kp', 'Reporting', 'c:kpi', ['KPI']),
-      S('Executive Dashboards', 'Ed', 'Reporting', 'c:dashboard', ['executive']),
-      S('Self-Service BI', 'Sb', 'Reporting', 'c:self'),
-      S('Data Storytelling', 'Ds', 'Reporting', 'c:story'),
-    ],
-  },
-  {
-    family: 'Analytics',
-    skills: [
-      S('Exploratory Data Analysis', 'Ea', 'Analytics', 'c:explore', ['EDA']),
-      S('Statistical Analysis', 'Sa', 'Analytics', 'c:stats'),
-      S('Forecasting', 'Fc', 'Analytics', 'c:forecast'),
-      S('Trend Analysis', 'Ta', 'Analytics', 'c:trend', ['trends']),
-      S('Root Cause Analysis', 'Rc', 'Analytics', 'c:root'),
-    ],
-  },
-  {
-    family: 'Microsoft Office',
-    skills: [
-      S('Advanced Excel', 'Xl', 'Microsoft Office', 'c:excel', ['Excel']),
-      S('Pivot Tables', 'Pt', 'Microsoft Office', 'c:pivot'),
-      S('Power Pivot', 'Pp', 'Microsoft Office', 'c:pivot'),
-      S('VBA', 'Vb', 'Microsoft Office', 'c:macro'),
-      S('XLOOKUP', 'Xk', 'Microsoft Office', 'c:lookup'),
-    ],
-  },
-  {
-    family: 'Business Apps',
-    skills: [
-      S('SAP', 'Sp', 'Business Apps', 'sap', ['\\bSAP\\b']),
-      S('Oracle ERP', 'Oe', 'Business Apps', 'oracle', ['ERP']),
-      S('Salesforce CRM', 'Sc', 'Business Apps', 'salesforce', ['CRM']),
-      S('Microsoft Dynamics 365', 'Dy', 'Business Apps', 'c:apps', ['Dynamics']),
-    ],
-  },
-  {
-    family: 'Tools',
-    skills: [
-      S('Git', 'Gt', 'Tools', 'git', ['\\bGit\\b']),
-      S('GitHub', 'Gh', 'Tools', 'github'),
-      S('Azure DevOps', 'Ad', 'Tools', 'azuredevops'),
-      S('Jira', 'Ji', 'Tools', 'jira'),
-      S('Confluence', 'Cf', 'Tools', 'confluence'),
-    ],
-  },
-  {
-    family: 'Methodologies',
-    skills: [
-      S('Agile', 'Ag', 'Methodologies', 'c:agile'),
-      S('Scrum', 'Sm', 'Methodologies', 'c:sprint'),
-      S('SDLC', 'Sd', 'Methodologies', 'c:cycle'),
-      S('Waterfall', 'Wf', 'Methodologies', 'c:waterfall'),
+      S('Advanced Excel', 'Xl', 'Tools & Technology', 'c:excel', ['Excel']),
+      S('PivotTables', 'Pt', 'Tools & Technology', 'c:pivot'),
+      S('VLOOKUP', 'Vl', 'Tools & Technology', 'c:lookup'),
+      S('SQL', 'Sq', 'Tools & Technology', 'c:sql', ['\\bSQL\\b']),
+      S('SQL Server', 'Ss', 'Tools & Technology', 'microsoftsqlserver'),
+      S('Python', 'Py', 'Tools & Technology', 'python'),
+      S('Pandas', 'Pd', 'Tools & Technology', 'pandas'),
+      S('NumPy', 'Np', 'Tools & Technology', 'numpy'),
+      S('Power BI', 'Pb', 'Tools & Technology', 'c:powerbi'),
+      S('DAX', 'Dx', 'Tools & Technology', 'c:dax'),
+      S('Power Query', 'Pq', 'Tools & Technology', 'c:query'),
+      S('Microsoft Azure', 'Az', 'Tools & Technology', 'azure', ['Azure']),
     ],
   },
 ];
 
 export const FAMILIES: Family[] = SKILL_GROUPS.map((g) => g.family);
 
-/** Which roles mention a skill (computed from the verbatim bullets). */
+/** Which roles mention a skill (computed from the bullets). */
 export function usedAt(skill: Skill): string[] {
   const patterns = (skill.match ?? [skill.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')]).map((p) => new RegExp(p, 'i'));
   return EXPERIENCE.filter((role) => role.bullets.some((b) => patterns.some((re) => re.test(b)))).map(
@@ -315,14 +239,14 @@ export type Project = {
 };
 
 /*
- * To show the Work section, add projects here (they must also be on the résumé).
- * Two public repositories already featured on the previous site, ready to use once confirmed:
+ * To show the Work section, add projects here (they should also be on the résumé).
+ * Two public repositories on her GitHub, ready to use once confirmed:
  *
  * {
  *   id: 'merger', index: '01', title: 'Strategic Merger Operations Dashboard', kicker: 'Business Intelligence · Strategy',
  *   description: 'An OTT merger analysis for leadership, examining user growth, content libraries, audience engagement, subscription movement, watch time, inactivity, and revenue strategy.',
  *   features: ['User growth', 'Content libraries', 'Audience engagement', 'Revenue strategy'],
- *   tech: [{ name: 'Power BI', logo: 'c:powerbi' }, { name: 'KPI Reporting', logo: 'c:kpi' }],
+ *   tech: [{ name: 'Power BI', logo: 'c:powerbi' }, { name: 'KPI Monitoring', logo: 'c:dashboard' }],
  *   github: 'https://github.com/saisupraja25/Strategic_Merger_Operations_Dashboard', ui: 'dashboard',
  * },
  * {
@@ -336,12 +260,12 @@ export type Project = {
 export const PROJECTS: Project[] = [];
 
 /* ------------------------------------------------------------------ */
-/* Certifications (issuer is not stated on the résumé)                 */
+/* Certifications                                                      */
 /* ------------------------------------------------------------------ */
 
 export const CERTIFICATIONS: { title: string; note: string; logo: string }[] = [
-  { title: 'Power BI Data Analyst Associate', note: 'Listed on résumé', logo: 'c:powerbi' },
-  { title: 'Azure Data Fundamentals', note: 'Listed on résumé', logo: 'azure' },
+  { title: 'Power BI Data Analyst Associate', note: 'Microsoft Certified', logo: 'c:powerbi' },
+  { title: 'Azure Data Fundamentals', note: 'Microsoft Certified', logo: 'azure' },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -359,13 +283,13 @@ export type Achievement = {
 };
 
 export const ACHIEVEMENTS: Achievement[] = [
-  { value: 55, suffix: '%', label: 'Less manual reporting', caption: 'Enterprise-wide Power BI dashboards', detail: 'Walmart · Business Intelligence Analyst', logo: 'c:powerbi' },
-  { value: 50, suffix: '%', label: 'Faster data refresh', caption: 'ETL automated with Azure Data Factory, SQL & Power Query', detail: 'Walmart · Business Intelligence Analyst', logo: 'azure' },
-  { value: 99, suffix: '%', label: 'Reporting accuracy', caption: 'Row-Level Security, governance & validation', detail: 'Walmart · Business Intelligence Analyst', logo: 'c:shield' },
-  { value: 25, suffix: '+ hrs', label: 'Saved every week', caption: 'Automated weekly and monthly reporting', detail: 'Walmart · Business Intelligence Analyst', logo: 'c:clock' },
-  { value: 40, suffix: '%', label: 'Faster report execution', caption: 'Optimized SQL stored procedures, views & queries', detail: 'Accenture · Business Intelligence Developer', logo: 'microsoftsqlserver' },
-  { value: 98, suffix: '%', label: 'On-time project delivery', caption: 'Agile Scrum teams, from sprint planning to production', detail: 'Accenture · Business Intelligence Developer', logo: 'c:agile' },
-  { value: 5, suffix: 'M+', label: 'Records validated', caption: 'Cleaned, transformed & validated at 99% accuracy', detail: 'XLogic · Data Analyst', logo: 'c:model' },
+  { value: 75, prefix: '$', suffix: 'K+', label: 'Cost discrepancies resolved', caption: 'Monthly results reconciled against projected targets', detail: 'Morgan Stanley · Financial Analyst', logo: 'c:reconcile' },
+  { value: 25, suffix: '%', label: 'Better reporting accuracy', caption: 'Financial datasets validated and reconciled in SQL', detail: 'Morgan Stanley · Financial Analyst', logo: 'microsoftsqlserver' },
+  { value: 20, suffix: '%', label: 'Faster decision-making', caption: 'Scenario and market-fluctuation analysis', detail: 'Morgan Stanley · Financial Analyst', logo: 'c:scenario' },
+  { value: 30, suffix: '%', label: 'Less reporting time', caption: 'Power BI dashboards for KPIs and risk indicators', detail: 'XLogic · Financial Risk Analyst', logo: 'c:powerbi' },
+  { value: 25, suffix: '%', label: 'Faster reporting turnaround', caption: 'Advanced Excel: PivotTables, VLOOKUP, formulas', detail: 'XLogic · Financial Risk Analyst', logo: 'c:excel' },
+  { value: 20, suffix: '%', label: 'Higher data accuracy', caption: 'Financial data extracted and reconciled with SQL', detail: 'XLogic · Financial Risk Analyst', logo: 'c:sql' },
+  { value: 3, suffix: '', label: 'Budget-overrun causes fixed', caption: 'Findings led management to adjust allocations', detail: 'XLogic · Financial Risk Analyst', logo: 'c:budget' },
 ];
 
 /* ------------------------------------------------------------------ */

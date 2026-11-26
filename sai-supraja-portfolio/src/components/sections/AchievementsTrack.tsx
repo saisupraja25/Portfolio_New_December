@@ -76,6 +76,20 @@ export default function AchievementsTrack({ items, children }: { items: Achievem
       setSeen((prev) => (nextSeen.some((v, i) => v && !prev[i]) ? prev.map((v, i) => v || nextSeen[i]) : prev));
     };
     const onScroll = () => { if (!frame) frame = requestAnimationFrame(update); };
+    // 3D tilt toward the pointer (mouse / trackpad only)
+    const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const onMove = (e: PointerEvent) => {
+      const card = (e.target as HTMLElement).closest<HTMLElement>('.ac-card');
+      cards.forEach((c) => { if (c !== card) { c.style.setProperty('--rx', '0deg'); c.style.setProperty('--ry', '0deg'); } });
+      if (!card) return;
+      const b = card.getBoundingClientRect();
+      const px = (e.clientX - b.left) / b.width - 0.5;
+      const py = (e.clientY - b.top) / b.height - 0.5;
+      card.style.setProperty('--rx', `${(-py * 10).toFixed(2)}deg`);
+      card.style.setProperty('--ry', `${(px * 12).toFixed(2)}deg`);
+    };
+    const onLeave = () => cards.forEach((c) => { c.style.setProperty('--rx', '0deg'); c.style.setProperty('--ry', '0deg'); });
+    if (fine) { track.addEventListener('pointermove', onMove); track.addEventListener('pointerleave', onLeave); }
     size();
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', size);
@@ -83,6 +97,8 @@ export default function AchievementsTrack({ items, children }: { items: Achievem
     return () => {
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', size);
+      track.removeEventListener('pointermove', onMove);
+      track.removeEventListener('pointerleave', onLeave);
       if (frame) cancelAnimationFrame(frame);
       section.style.height = '';
     };

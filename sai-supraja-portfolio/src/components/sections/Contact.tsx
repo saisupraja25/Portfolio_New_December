@@ -10,18 +10,19 @@ const css = `
 .cx-line{display:block;white-space:nowrap}
 .cx-line.it{font-weight:400;letter-spacing:-.03em}
 .cx-ch{display:inline-block;transition:transform .5s var(--ease)}
-@media (hover:hover){.cx-ch:hover{animation:hop .6s var(--ease)}}
+@media (hover:hover){.cx-ch:hover{animation:hop .6s var(--ease);color:var(--indigo)}}
 @keyframes hop{0%{transform:none}35%{transform:translateY(-.16em)}65%{transform:translateY(.02em)}100%{transform:none}}
 .cx-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:end;margin-top:clamp(40px,7vh,80px)}
 .cx-mail{display:flex;align-items:center;flex-wrap:wrap;gap:14px}
-.cx-mail a{font-size:clamp(22px,3.2vw,46px);font-weight:600;letter-spacing:-.035em;text-decoration:underline;text-underline-offset:.16em;text-decoration-thickness:2px;overflow-wrap:anywhere}
+.cx-mail a{font-size:clamp(22px,3.2vw,46px);font-weight:600;letter-spacing:-.035em;overflow-wrap:anywhere;background:var(--grad) 0 100%/100% 3px no-repeat;padding-bottom:4px;transition:background-size .5s var(--ease)}
+.cx-mail a:hover{background-size:100% 6px;color:var(--indigo-ink)}
 .cx-copy{height:36px;padding:0 14px;border-radius:999px;font-family:var(--font-mono);font-size:12px;box-shadow:inset 0 0 0 1px rgba(13,13,13,.22);transition:background .3s,color .3s}
-.cx-copy:hover,.cx-copy.done{background:var(--ink);color:#fff}
+.cx-copy:hover,.cx-copy.done{background:var(--emerald);color:#fff;box-shadow:none}
 .cx-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
 .cx-badge{position:relative;width:150px;height:150px;display:grid;place-items:center}
 .cx-badge > svg{position:absolute;inset:0;animation:spin 18s linear infinite}
 .cx-badge text{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;fill:var(--ink)}
-.cx-badge b{position:relative;width:54px;height:54px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center}
+.cx-badge b{position:relative;width:54px;height:54px;border-radius:50%;background:var(--grad);box-shadow:0 12px 30px -10px rgba(99,102,241,.7);color:#fff;display:grid;place-items:center}
 @keyframes spin{to{transform:rotate(360deg)}}
 .ft{margin-top:clamp(80px,12vh,140px);border-top:1px solid var(--line);padding-block:26px 34px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:14px;color:var(--mute)}
 .ft a,.ft button{color:var(--ink);font-weight:500}

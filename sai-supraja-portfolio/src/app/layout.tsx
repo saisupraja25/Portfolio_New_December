@@ -28,7 +28,7 @@ const mono = localFont({
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 const description =
-  'Business Intelligence Analyst with 4+ years of experience in designing enterprise BI solutions, developing interactive dashboards, and transforming complex datasets into actionable business insights.';
+  'Financial Analyst with nearly four years of experience in financial risk analysis, forecasting and performance reporting, backed by Advanced Excel, SQL, Python and Power BI.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl.endsWith('/') ? siteUrl : `${siteUrl}/`),

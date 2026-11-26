@@ -2,6 +2,7 @@ import { PROFILE, asset } from '@/lib/data';
 import { ArrowDown } from '../ui/Icons';
 import HeroMedia from './HeroMedia';
 import HeroLinks from './HeroLinks';
+import HeroScene from './HeroScene';
 
 const css = `
 .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:clip}
@@ -11,18 +12,27 @@ const css = `
 @keyframes hIn{from{opacity:0;transform:translateY(24px)}}
 @keyframes hMask{from{transform:translateY(105%)}}
 .hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:end;gap:clamp(16px,2vw,40px);width:100%}
-.hero-ghost{position:absolute;left:50%;top:clamp(70px,13vh,140px);transform:translateX(-50%);font-weight:800;font-size:clamp(150px,31vw,560px);line-height:.8;letter-spacing:-.06em;color:transparent;-webkit-text-stroke:1.5px rgba(13,13,13,.13);white-space:nowrap;user-select:none;pointer-events:none;z-index:0}
+.hero-aurora{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.hero-aurora span{position:absolute;border-radius:50%;filter:blur(70px);opacity:.42;animation:aurora 18s ease-in-out infinite alternate}
+.hero-aurora span:nth-child(1){width:46vw;height:46vw;left:-8vw;top:-10vw;background:radial-gradient(circle,#10b981,transparent 65%)}
+.hero-aurora span:nth-child(2){width:40vw;height:40vw;right:-6vw;top:4vw;background:radial-gradient(circle,#6366f1,transparent 65%);animation-delay:-6s}
+.hero-aurora span:nth-child(3){width:34vw;height:34vw;left:34vw;bottom:-14vw;background:radial-gradient(circle,#f59e0b,transparent 65%);opacity:.28;animation-delay:-11s}
+@keyframes aurora{0%{transform:translate(0,0) scale(1)}50%{transform:translate(4vw,3vw) scale(1.12)}100%{transform:translate(-3vw,5vw) scale(.94)}}
+.hero-3d{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;opacity:0;transition:opacity 1.6s var(--ease);-webkit-mask-image:linear-gradient(180deg,#000 70%,transparent);mask-image:linear-gradient(180deg,#000 70%,transparent)}
+.hero-3d.is-ready{opacity:1}
+.hero-ghost{position:absolute;left:50%;top:clamp(70px,13vh,140px);transform:translateX(-50%);font-weight:800;font-size:clamp(150px,31vw,560px);line-height:.8;letter-spacing:-.06em;color:transparent;background:var(--grad);-webkit-background-clip:text;background-clip:text;opacity:.13;white-space:nowrap;user-select:none;pointer-events:none;z-index:0}
 .hero-ghost{animation:heroGhost 1.6s var(--ease) .1s both}
-@keyframes heroGhost{from{opacity:0;transform:translateX(-50%) translateY(40px)}}
-.hero-stage{position:relative;z-index:1;height:min(96svh,1040px);aspect-ratio:768/960;margin-inline:auto;max-width:100%}
-.hero-left,.hero-right{position:relative;z-index:2;padding-bottom:clamp(40px,11vh,120px)}
+@keyframes heroGhost{from{opacity:0;transform:translateX(-50%) translateY(40px)}to{opacity:.13}}
+.hero-stage{position:relative;z-index:2;height:min(96svh,1040px);aspect-ratio:768/960;margin-inline:auto;max-width:100%}
+.hero-left,.hero-right{position:relative;z-index:3;padding-bottom:clamp(40px,11vh,120px)}
 .hero-left{container-type:inline-size}
-.hero h1{margin-top:18px;font-weight:700;font-size:clamp(30px,17cqi,72px);letter-spacing:-.045em;line-height:1}
+.hero h1{margin-top:18px;font-weight:700;font-size:clamp(30px,24cqi,92px);letter-spacing:-.045em;line-height:1}
 .hero h1 .it{display:block}
 .hero-intro{max-width:300px;color:var(--ink-2);font-size:15px;line-height:1.55}
 .hero-ctas{display:flex;flex-direction:column;align-items:flex-start;gap:10px;margin-top:22px}
 .hero-loc{margin-top:26px;font-family:var(--font-mono);font-size:12px;color:var(--mute);display:flex;align-items:center;gap:8px}
-.hero-loc i{width:7px;height:7px;border-radius:50%;background:var(--ink);box-shadow:0 0 0 4px rgba(13,13,13,.1)}
+.hero-loc i{width:7px;height:7px;border-radius:50%;background:var(--emerald);box-shadow:0 0 0 4px rgba(16,185,129,.18);animation:livePulse 2s ease-in-out infinite}
+@keyframes livePulse{50%{box-shadow:0 0 0 8px rgba(16,185,129,0)}}
 .hm{position:relative;width:100%;height:100%}
 .hm video,.hm img{width:100%;height:100%;object-fit:contain;object-position:50% 100%}
 .hm video{mix-blend-mode:multiply}
@@ -30,7 +40,7 @@ const css = `
 @keyframes hmIn{from{opacity:.01;transform:translateY(40px) scale(.98)}}
 .hm-still{animation:hmBreath 6s ease-in-out 1.8s infinite alternate;transform-origin:50% 100%}
 @keyframes hmBreath{from{transform:none}to{transform:translateY(-4px) scale(1.006)}}
-.hm-sound{position:absolute;right:6%;bottom:12%;width:46px;height:46px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;box-shadow:0 12px 26px -12px rgba(13,13,13,.6);transition:transform .5s var(--ease)}
+.hm-sound{position:absolute;right:6%;bottom:12%;width:46px;height:46px;border-radius:50%;background:var(--grad);color:#fff;display:grid;place-items:center;box-shadow:0 12px 26px -12px rgba(13,13,13,.6);transition:transform .5s var(--ease)}
 .hm-sound:hover{transform:scale(1.06)}
 .hm-sound svg{width:16px;height:16px}
 .hm-sound.ping::after{content:"";position:absolute;inset:-6px;border-radius:50%;box-shadow:0 0 0 1.5px var(--ink);animation:hmPing 1.8s var(--ease) infinite}
@@ -53,13 +63,15 @@ export default function Hero() {
   return (
     <section id="top" className="hero" aria-labelledby="hero-title" tabIndex={-1}>
       <style>{css}</style>
+      <div className="hero-aurora" aria-hidden="true"><span /><span /><span /></div>
+      <HeroScene />
       <p className="hero-ghost" aria-hidden="true">{PROFILE.firstName.toUpperCase()}</p>
       <div className="wrap hero-grid">
         <div className="hero-left">
           <p className="tag h-in" style={{ ['--i' as string]: 0 }}><b>00</b><i aria-hidden="true" />Hello, I&apos;m {PROFILE.name}</p>
           <h1 id="hero-title">
-            <span className="h-mask" style={{ ['--i' as string]: 1 }}><span>Business Intelligence</span></span>
-            <span className="h-mask" style={{ ['--i' as string]: 2 }}><span className="it">Analyst.</span></span>
+            <span className="h-mask" style={{ ['--i' as string]: 1 }}><span>{PROFILE.roleLead}</span></span>
+            <span className="h-mask" style={{ ['--i' as string]: 2 }}><span className="it">{PROFILE.roleAccent}</span></span>
           </h1>
         </div>
         <HeroMedia />

@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { CERTIFICATIONS, EXPERIENCE, PROFILE, asset } from '@/lib/data';
+import { PROFILE, asset } from '@/lib/data';
 
 /** Lanyard ID card: damped pendulum swing driven by pointer velocity, idle sway, 3D flip. */
 export default function IdCard() {
@@ -72,13 +72,7 @@ export default function IdCard() {
     <span key={i}>{i % 2 ? PROFILE.role : PROFILE.name}</span>
   ));
 
-  const backLines = [
-    `${PROFILE.role} · 4+ years`,
-    `Master of Science in Data Science, University of Houston (${PROFILE.graduation})`,
-    'Power BI · Tableau · SQL · Python · Azure Data Factory',
-    `Certified: ${CERTIFICATIONS.map((c) => c.title).join(' · ')}`,
-    EXPERIENCE.map((r) => r.company).join(' · '),
-  ];
+  const backLines = PROFILE.cardLines;
 
   return (
     <div className="lan" ref={lanRef}>
@@ -107,7 +101,7 @@ export default function IdCard() {
             <p className="idc-role">{PROFILE.role}</p>
             <div className="idc-rows">
               <div className="idc-row"><span>ID No.</span><span>{PROFILE.initials}-{PROFILE.careerStart}</span></div>
-              <div className="idc-row"><span>Dept.</span><span>Business Intelligence</span></div>
+              <div className="idc-row"><span>Dept.</span><span>{PROFILE.dept}</span></div>
               <div className="idc-row"><span>Class of</span><span>{PROFILE.graduation}</span></div>
             </div>
             <div className="idc-foot">

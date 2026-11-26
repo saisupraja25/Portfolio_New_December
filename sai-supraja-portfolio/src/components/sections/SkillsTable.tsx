@@ -3,9 +3,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { TechLogo, brandTint } from '../ui/TechLogo';
 
-export type Tile = { n: number; name: string; symbol: string; family: string; logo: string; usedAt: string[]; d8: number; d4: number };
+export type Tile = { n: number; name: string; symbol: string; family: string; logo: string; usedAt: string[]; d8: number; d4: number; color: string };
 
-export default function SkillsTable({ tiles, families }: { tiles: Tile[]; families: string[] }) {
+export default function SkillsTable({ tiles, families }: { tiles: Tile[]; families: { name: string; color: string }[] }) {
   const [filter, setFilter] = useState<string>('All');
   const [sel, setSel] = useState(0);
   const gridRef = useRef<HTMLDivElement>(null);
@@ -29,9 +29,9 @@ export default function SkillsTable({ tiles, families }: { tiles: Tile[]; famili
   return (
     <>
       <div className="sk-chips" role="group" aria-label="Filter skills by family">
-        {['All', ...families].map((f) => (
-          <button key={f} type="button" className="sk-chip" aria-pressed={filter === f} onClick={() => setFilter(f)}>
-            {f}
+        {[{ name: 'All', color: '' }, ...families].map((f) => (
+          <button key={f.name} type="button" className="sk-chip" style={f.color ? { ['--fc' as string]: f.color } : undefined} aria-pressed={filter === f.name} onClick={() => setFilter(f.name)}>
+            <i aria-hidden="true" />{f.name}
           </button>
         ))}
       </div>
@@ -44,7 +44,7 @@ export default function SkillsTable({ tiles, families }: { tiles: Tile[]; famili
                 key={tile.n}
                 type="button"
                 className={`sk-tile${dim ? ' dim' : ''}`}
-                style={{ ['--d8' as string]: tile.d8, ['--d4' as string]: tile.d4 }}
+                style={{ ['--d8' as string]: tile.d8, ['--d4' as string]: tile.d4, ['--fc' as string]: tile.color }}
                 aria-current={sel === i ? 'true' : undefined}
                 aria-label={`${tile.name}, ${tile.family}`}
                 onMouseEnter={() => setSel(i)}
@@ -59,7 +59,7 @@ export default function SkillsTable({ tiles, families }: { tiles: Tile[]; famili
           })}
         </div>
         <aside className="sk-insp card" aria-live="polite" aria-label="Skill details">
-          <div key={t.n} className="sk-logo" style={{ ['--tint' as string]: brandTint(t.logo) }}>
+          <div key={t.n} className="sk-logo" style={{ ['--tint' as string]: t.logo.startsWith('c:') ? t.color : brandTint(t.logo), ['--fc' as string]: t.color }}>
             <TechLogo logo={t.logo} size={t.logo.startsWith('c:') ? 96 : 150} />
           </div>
           <div>
